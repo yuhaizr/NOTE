@@ -30,7 +30,7 @@ class LoginController extends Controller{
 		if(false == $authInfo){
 			$this->error("账号不存在");
 		}else {
-			if($authInfo['password'] != md5($password)){
+			if($authInfo['password'] != $password){
 				$this->error("密码错误");
 			}
 			$this->dologin($authInfo);

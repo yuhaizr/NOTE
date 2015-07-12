@@ -419,6 +419,14 @@
                             <span class="menu-text"> Data Boxes </span>
                         </a>
                     </li>
+                    <foreach name="menu" item="vo" >
+                    <li>
+                        <a href="{$vo.link}">
+                            <i class="menu-icon glyphicon glyphicon-tasks"></i>
+                            <span class="menu-text">{$vo.title}</span>
+                        </a>
+                    </li>                    
+                    </foreach>
   
                 </ul>
                 <!-- /Sidebar Menu -->

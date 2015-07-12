@@ -33,6 +33,7 @@ class BaseController extends Controller{
 					}
 				}
 		}	
+		$session = $_SESSION;
 		//生成菜单
 		$this->menu();
 	}
@@ -76,11 +77,11 @@ class BaseController extends Controller{
 	} 
 	
 	protected function menu(){
-		if(isset($_SESSION['USER_AUTH_KEY'])){
+		if(isset($_SESSION[C('USER_AUTH_KEY')])){
 			//菜单的数组
 			$menu = array();
 			
-			if (isset($_SESSION['menu'.$_SESSION['USER_AUTH_KEY']])){
+			if (isset($_SESSION['menu'.$_SESSION[C('USER_AUTH_KEY')]])){
 				//如果缓存中存在menu就直接从缓存中获取
  				//$menu = $_SESSION['menu'.$_SESSION['USER_AUTH_KEY']];
 			}else {
