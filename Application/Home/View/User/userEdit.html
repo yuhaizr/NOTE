@@ -1,0 +1,61 @@
+<extend name="Public:base"/>
+
+<block name="header"></block>
+
+<block name="body">
+
+<div class="row">
+	<div class="col-xs-12 col-md-12">
+	    	<div class="widget">
+	       	<div class="widget-header ">
+	           	<span class="widget-caption">用户编辑</span>
+	               <div class="widget-buttons">
+	                    <a href="#" data-toggle="maximize">
+	                        <i class="fa fa-expand"></i>
+	                    </a>
+	                    <a href="#" data-toggle="collapse">
+	                        <i class="fa fa-minus"></i>
+	                    </a>
+	                    <a href="#" data-toggle="dispose">
+	                        <i class="fa fa-times"></i>
+	                    </a>
+	                </div>
+	            </div>
+	            <div class="widget-body">
+					<form action="__APP__/Home/User/userEdit" method ="post">
+	            		<input type="hidden" value="userEdit" name="type">
+	            		<input type="hidden" value="{$userInfo.id}" name="id">
+	            		<div class ="form-group row">
+	            			<label class="col-sm-3 control-label">用户名</label>
+	            			<div class="col-sm-6" >
+	            				<input value="{$userInfo.username}" class="form-control" type="text" name="username">
+	            			</div>
+	            		</div>
+	            		<div class="form-group">
+	            			<div class="col-sm-offset-4">
+	            				<input class="btn btn-palegreen" type="submit" value="保存">
+	            			</div>
+	            		</div>    	            		
+	            		
+	            	</form>		                
+	       		</div>
+		</div>
+	</div>
+</div>
+                                
+
+
+</block>
+
+<block name="footjs">
+
+   <!--Basic Scripts-->
+   <script src="__PUBLIC__/js/jquery-2.0.3.min.js"></script>
+   <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+
+   <!--Beyond Scripts-->
+   <script src="__PUBLIC__/js/beyond.min.js"></script>
+
+   <!--Page Related Scripts-->
+
+</block>

@@ -1,0 +1,87 @@
+<extend name="Public:base"/>
+
+<block name="header">
+	<style>
+		.control-label{
+			text-align: right;
+			line-height: 39px;
+			height: 39px;
+		}
+	</style>
+
+</block>
+
+<block name="body">
+
+<div class="row">
+	<div class="col-xs-8 col-md-8">
+	    	<div class="widget">
+	       	<div class="widget-header ">
+	           	<span class="widget-caption">编辑角色</span>
+	               <div class="widget-buttons">
+	                    <a href="#" data-toggle="maximize">
+	                        <i class="fa fa-expand"></i>
+	                    </a>
+	                    <a href="#" data-toggle="collapse">
+	                        <i class="fa fa-minus"></i>
+	                    </a>
+	                    <a href="#" data-toggle="dispose">
+	                        <i class="fa fa-times"></i>
+	                    </a>
+	                </div>
+	            </div>
+	            <div class="widget-body ">
+	            	
+	            	<form action="__APP__/Home/Role/roleEdit" method ="post">
+	            		<input type="hidden" value="roleEdit" name="type">
+	            		<input type="hidden" value="{$roleInfo.id}" name="id">
+	            		<div class ="form-group row">
+	            			<label class="col-sm-3 control-label">角色名称</label>
+	            			<div class="col-sm-6" >
+	            				<input class="form-control" value="{$roleInfo.name}" type="text" name="name">
+	            			</div>
+	            		</div>
+	            		<div class ="form-group row">
+	            			<label class="col-sm-3 control-label">是否启用</label>
+	            			<div class="col-sm-6 " >
+	                           	<label class="control-label">
+	                                <input name="status" class="checkbox-slider" type="checkbox" {$roleInfo.status} >
+	                                <span class="text"></span>
+	                            </label>     				
+	            			</div>
+	            		</div>
+	            		<div class ="form-group row">
+	            			<label class="col-sm-3 control-label">描述</label>
+	            			<div class="col-sm-6" >
+	            				<input class="form-control" value="{$roleInfo.remark}" type="text" name="remark">
+	            			</div>
+	            		</div>	
+	            		<div class="form-group">
+	            			<div class="col-sm-offset-4">
+	            				<input class="btn btn-palegreen" type="submit" value="保存">
+	            			</div>
+	            		</div>            		
+	            		
+	            	</form>
+	              
+	       		</div>
+		</div>
+	</div>
+</div>
+                                
+
+
+</block>
+
+<block name="footjs">
+
+   <!--Basic Scripts-->
+   <script src="__PUBLIC__/js/jquery-2.0.3.min.js"></script>
+   <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+
+   <!--Beyond Scripts-->
+   <script src="__PUBLIC__/js/beyond.min.js"></script>
+
+   <!--Page Related Scripts-->
+
+</block>

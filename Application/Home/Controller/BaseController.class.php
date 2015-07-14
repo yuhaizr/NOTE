@@ -1,7 +1,8 @@
 <?php
 namespace Home\Controller;
- use Think\Controller;
+use Think\Controller;
 use Org\Util\Rbac;
+use Org\Util\FlashData;
 class BaseController extends Controller{
 	
 	public function _initialize(){

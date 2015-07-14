@@ -18,10 +18,10 @@
 				'childs'=> array(
 					array(
 						'title' => '用户列表',
-						'link'  => 'Home/User/userList'
+						'link'  => '/Home/User/userList'
 					)
 				)
 				
-				)	
+			),	
 			
 	);

@@ -1,0 +1,82 @@
+<extend name="Public:base"/>
+
+<block name="header"></block>
+
+<block name="body">
+
+<div class="row">
+	<div class="col-xs-12 col-md-12">
+	    	<div class="widget">
+	       	<div class="widget-header ">
+	           	<span class="widget-caption">Simple DataTable</span>
+	               <div class="widget-buttons">
+	                    <a href="#" data-toggle="maximize">
+	                        <i class="fa fa-expand"></i>
+	                    </a>
+	                    <a href="#" data-toggle="collapse">
+	                        <i class="fa fa-minus"></i>
+	                    </a>
+	                    <a href="#" data-toggle="dispose">
+	                        <i class="fa fa-times"></i>
+	                    </a>
+	                </div>
+	            </div>
+	            
+	            <div class="widget-body">
+	                <div class="table-toolbar">
+	                    <a id="editabledatatable_new" href="__APP__/Home/Role/roleAdd" class="btn btn-default">
+	                        	添加角色
+	                    </a>
+
+	                </div>	            
+	                <table class="table table-striped table-bordered table-hover" id="simpledatatable">
+	                    <thead>
+	                    	
+	                        <tr>
+	                            <th>编号</th>
+	                            <th>角色名</th>
+	                            <th>状态</th>
+	                            <th>描述</th>
+	                            <th>操作</th>
+	                        </tr>
+
+	                    </thead>
+	                    <tbody>
+	               	   	<foreach name ="roleList" item="vo" key = "key">
+	                    	<tr>
+	                    		<td>{$key +1}</td>
+	                    		<td>{$vo.name}</td>
+	                    		<td>{$vo.status}</td>
+	                    		<td>{$vo.remark}</td>
+	                    		<td>
+	                    			<a href="__APP__/Home/Role/roleEdit?id={$vo.id}" class="btn btn-info btn-xs edit"><i class="fa fa-edit"> 编辑</i></a>
+	                    			<a href="__APP__/Home/Role/roleUserList?id={$vo.id}" class="btn btn-info btn-xs edit"><i class="fa fa-edit"> 用户列表</i></a>
+	               					<a href="__APP__/Home/Role/roleDel?id={$vo.id}" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"> 删除</i></a>
+	                    		</td>
+	                    	
+	        
+	                    	</tr>
+	                    </foreach>
+	               	    </tbody>
+	           	</table>
+	       	</div>
+		</div>
+	</div>
+</div>
+                                
+
+
+</block>
+
+<block name="footjs">
+
+   <!--Basic Scripts-->
+   <script src="__PUBLIC__/js/jquery-2.0.3.min.js"></script>
+   <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+
+   <!--Beyond Scripts-->
+   <script src="__PUBLIC__/js/beyond.min.js"></script>
+
+   <!--Page Related Scripts-->
+
+</block>

@@ -31,7 +31,7 @@
 	
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="__PUBLIC__/js/skins.min.js"></script>
-    
+ 	<block name="header">header</block>   
     
 </head>
 <!-- /Head -->
@@ -405,29 +405,26 @@
                 <!-- /Page Sidebar Header -->
                 <!-- Sidebar Menu -->
                 <ul class="nav sidebar-menu">
-                    <!--Dashboard-->
-                    <li>
-                        <a href="index.html">
-                            <i class="menu-icon glyphicon glyphicon-home"></i>
-                            <span class="menu-text"> Dashboard </span>
-                        </a>
-                    </li>
-                    <!--Databoxes-->
-                    <li>
-                        <a href="databoxes.html">
-                            <i class="menu-icon glyphicon glyphicon-tasks"></i>
-                            <span class="menu-text"> Data Boxes </span>
-                        </a>
-                    </li>
                     <foreach name="menu" item="vo" >
-                    <li>
-                        <a href="{$vo.link}">
-                            <i class="menu-icon glyphicon glyphicon-tasks"></i>
-                            <span class="menu-text">{$vo.title}</span>
-                        </a>
-                    </li>                    
+	                    <li>
+	                        <a href="#" class="menu-dropdown">
+	                            <i class="menu-icon fa fa-table"></i>
+	                            <span class="menu-text">{$vo.title}</span>
+	
+	                            <i class="menu-expand"></i>
+	                        </a>
+	                        <ul class = "submenu">
+	                        	<foreach name="vo.childs" item= 'v'>
+	                        		<li>
+	                        			<a href="__APP__/{$v.link}">
+	                        				<span class="menu-text">{$v.title}</span>
+	                        			</a>
+	                        		</li>
+	                        	</foreach>
+	                        
+	                        </ul>
+	                    </li>                    
                     </foreach>
-  
                 </ul>
                 <!-- /Sidebar Menu -->
             </div>

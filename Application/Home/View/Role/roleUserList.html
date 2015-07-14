@@ -1,0 +1,133 @@
+<extend name="Public:base"/>
+
+<block name="header">
+	<style>
+		.label_control{
+			line-height: 32px;
+			height: 32px;
+			text-align: right;
+		}
+	
+	</style>
+	
+
+</block>
+
+<block name="body">
+
+<div class="row">
+	<div class="col-xs-12 col-md-12">
+	    	<div class="widget">
+	       	<div class="widget-header ">
+	           	<span class="widget-caption">角色下的用户管理</span>
+	               <div class="widget-buttons">
+	                    <a href="#" data-toggle="maximize">
+	                        <i class="fa fa-expand"></i>
+	                    </a>
+	                    <a href="#" data-toggle="collapse">
+	                        <i class="fa fa-minus"></i>
+	                    </a>
+	                    <a href="#" data-toggle="dispose">
+	                        <i class="fa fa-times"></i>
+	                    </a>
+	                </div>
+	            </div>
+	            <div class="widget-body">
+	            	<div class="row">
+	            		<div class="col-sm-2 label_control">当前角色</div>
+	            		<div class="col-sm-8">
+                            <div>
+                            	 <select id="e1" style="width:100%;">
+                            	 	<foreach name="allRole" item="vo" key="key">
+                            	 		<option {$vo.selected} value="{$vo.id}">{$vo.name}</option>
+                            	 	</foreach>
+                            	 </select>
+                            </div>                		
+	            		</div>
+	            	</div>
+	            	<hr/>
+	            	<div class="row" id="alluserCheckBox">
+	            		<foreach name="allUser" item="vo" >
+		            		<div class="col-sm-3" >
+		                    	<div class="checkbox">
+		                            <label>
+		                                <input class="roleUser" name="roleUser" type="checkbox" value="{$vo.id}" {$vo.checked} >
+		                                <span class="text">{$vo.username}</span>
+		                            </label>
+		                        </div>
+		            		</div>
+	            		</foreach>
+	            	</div>	
+	            	<hr/>
+	            	<div class="row">
+	            		<div class="col-sm-12 text-center">
+	            			<a id="saveRoleUser" class="btn btn-default">保存</a>
+	            		</div>
+	            	</div>               
+				</div>
+	</div>
+</div>
+                                
+
+
+</block>
+
+<block name="footjs">
+
+   <!--Basic Scripts-->
+   <script src="__PUBLIC__/js/jquery-2.0.3.min.js"></script>
+   <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+
+   <!--Beyond Scripts-->
+   <script src="__PUBLIC__/js/beyond.min.js"></script>
+   
+
+   <!--Page Related Scripts-->
+   <script src="__PUBLIC__/js/select2/select2.js"></script>
+   
+   <script type="text/javascript">
+   
+   		$("#e1").select2();
+   		$("#e1").change(function(){
+   			var id = $(this).val();
+   			var data={"id":id,"type":"roleUserList"};
+   			$.ajax({
+   				type:'post',
+   				url:"__APP__/Home/Role/roleUserList",
+   				data:data,
+   				dataType:"json",
+   				success:function(dt){
+   					//console.log(dt);
+   					var html ="";
+   					$.each(dt,function(k,v){
+   						html +='<div class="col-sm-3"><div class="checkbox"><label><input type="checkbox" value='+v.id+' '+v.checked +'><span class="text">'+v.username+'</span></label></div></div>';
+   					});
+   					$("#alluserCheckBox").html(html);
+   				}
+   			});
+   			
+   		});
+   		
+   		$("#saveRoleUser").click(function(){
+   			var role_id = $("#e1").val();
+   			var userIds = [];
+			$(".roleUser:checked").each(function(k,v){
+				userIds.push($(v).val());
+			});
+			var data ={"role_id":role_id};
+			console.log(data);
+   			$.ajax({
+   				type:'post',
+   				url:"__APP__/Home/Role/changeUserList",
+   				data:data,
+   				dataType:"json",
+   				success:function(dt){
+					console.log(dt);
+   				}
+   			});
+			
+   		});
+   
+   </script>
+
+</block>
